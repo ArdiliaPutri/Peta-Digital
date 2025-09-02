@@ -78,7 +78,7 @@ var markerPlatarOmbo = L.marker([-7.783473236884777, 110.84818674466814]).addTo(
     }
   };
 
-  var polygonLayer = L.geoJSON(batasGentan, {
+  var batasgentanlayer = L.geoJSON(batasGentan, {
   style: {
     color: "red",
     weight: 2,
@@ -192,16 +192,17 @@ var dataRTRW1 = {
   },
   onEachFeature: function (feature, layer) {
     layer.bindPopup(`
-      <b>Informasi Desa Gentan</b><br>
+      <b>Informasi Dusun Bodeh RT 1/RW 9</b><br>
       <table border="1" cellspacing="0" cellpadding="5">
         <tr>
           <td><b>Jenis Kelamin</b></td>
-          <td>± Perempuan </td>
-          <td>± Laki-laki </td>
+          <td> Laki-laki </td>
+          <td> Perempuan </td>
         </tr>
         <tr>
           <td><b>Jumlah Penduduk</b></td>
-          <td>± 3.200 Jiwa</td>
+          <td>57 Jiwa</td>
+          <td>40 Jiwa</td>
         </tr>
       </table>
     `);
@@ -295,16 +296,17 @@ var dataRTRW2= {
   },
   onEachFeature: function (feature, layer) {
     layer.bindPopup(`
-      <b>Informasi Desa Gentan</b><br>
+      <b>Informasi Dusun Bodeh RT 2/RW 9</b><br>
       <table border="1" cellspacing="0" cellpadding="5">
         <tr>
           <td><b>Jenis Kelamin</b></td>
-          <td>± Perempuan </td>
-          <td>± Laki-laki </td>
+          <td> Laki-laki </td>
+          <td> Perempuan </td>
         </tr>
         <tr>
           <td><b>Jumlah Penduduk</b></td>
-          <td>± 3.200 Jiwa</td>
+          <td>37 Jiwa</td>
+          <td>35 Jiwa</td>
         </tr>
       </table>
     `);
@@ -381,40 +383,23 @@ var dataRTRW2= {
   },
   onEachFeature: function (feature, layer) {
     layer.bindPopup(`
-      <b>Informasi Desa Gentan</b><br>
+      <b>Informasi Dusun Bodeh RT 3/RW 9</b><br>
       <table border="1" cellspacing="0" cellpadding="5">
         <tr>
           <td><b>Jenis Kelamin</b></td>
-          <td>± Perempuan </td>
-          <td>± Laki-laki </td>
+          <td> Laki-laki </td>
+          <td> Perempuan </td>
         </tr>
         <tr>
           <td><b>Jumlah Penduduk</b></td>
-          <td>± 3.200 Jiwa</td>
+          <td>46 Jiwa</td>
+          <td>35 Jiwa</td>
         </tr>
       </table>
     `);
   }
 }).addTo(map);
 
-  // --- Tambahkan layer RT/RW ---
-  var rtLayer = L.geoJSON(dataRTRW4, {
-    style: function(feature) {
-      return {
-        color: "blue",
-        weight: 2,
-        fillColor: "cyan",
-        fillOpacity: 0.3
-      };
-    },
-    onEachFeature: function (feature, layer) {
-      layer.bindPopup(`
-        <b>${feature.properties.nama}</b><br>
-        RT: ${feature.properties.rt}<br>
-        RW: ${feature.properties.rw}
-      `);
-    }
-  }).addTo(map);
 
    var dataRTRW4= {
   "type": "FeatureCollection",
@@ -475,31 +460,6 @@ var dataRTRW2= {
   ]
 };
 
-  var polygonLayer = L.geoJSON(dataRTRW3, {
-  style: {
-    color: "red",
-    weight: 2,
-    fillColor: "purple",
-    fillOpacity: 0.3
-  },
-  onEachFeature: function (feature, layer) {
-    layer.bindPopup(`
-      <b>Informasi Desa Gentan</b><br>
-      <table border="1" cellspacing="0" cellpadding="5">
-        <tr>
-          <td><b>Jenis Kelamin</b></td>
-          <td>± Perempuan </td>
-          <td>± Laki-laki </td>
-        </tr>
-        <tr>
-          <td><b>Jumlah Penduduk</b></td>
-          <td>± 3.200 Jiwa</td>
-        </tr>
-      </table>
-    `);
-  }
-}).addTo(map);
-
   // --- Tambahkan layer RT/RW ---
   var rtLayer = L.geoJSON(dataRTRW4, {
     style: function(feature) {
@@ -519,7 +479,31 @@ var dataRTRW2= {
     }
   }).addTo(map);
 
-
+  var polygonLayer = L.geoJSON(dataRTRW4, {
+  style: {
+    color: "red",
+    weight: 2,
+    fillColor: "green",
+    fillOpacity: 0.3
+  },
+  onEachFeature: function (feature, layer) {
+    layer.bindPopup(`
+      <b>Informasi Dusun Bodeh RT 4/RW 9</b><br>
+      <table border="1" cellspacing="0" cellpadding="5">
+        <tr>
+          <td><b>Jenis Kelamin</b></td>
+          <td> Laki-laki </td>
+          <td> Perempuan </td>
+        </tr>
+        <tr>
+          <td><b>Jumlah Penduduk</b></td>
+          <td> 29 Jiwa </td>
+          <td> 29 Jiwa </td>
+        </tr>
+      </table>
+    `);
+  }
+}).addTo(map);
 
   // --- Layer Control ---
   var baseMaps = {
@@ -529,7 +513,8 @@ var dataRTRW2= {
 
   var overlayMaps = {
     "Marker Gentan": marker,
-    "Batas Gentan": polygonLayer
+    "Batas Gentan": batasgentanlayer
+
   };
 
   L.control.layers(baseMaps, overlayMaps).addTo(map);
