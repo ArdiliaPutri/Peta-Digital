@@ -45,7 +45,7 @@
   var markerSendangLele = L.marker([-7.782089381635649, 110.84329596873556]).addTo(map)
       .bindPopup('<b>Sendang Lele</b><br><img src="https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p2/230/2024/04/19/sendang-lele-ress-1321002123.jpg"alt="Sendang Lele" width="200px">');
 
-  var markerEmbungGentan = L.marker([-7.78442486491355, 110.83791245400464]).addTo(map)
+  var markerEmbungGentan = L.marker([-7.7847281922239135, 110.83788842348315]).addTo(map)
       .bindPopup('<b>Embung Gentan</b>');
 
   var markerBatuSeribu = L.marker([-7.78666222191999, 110.8386166230242]).addTo(map)
@@ -114,7 +114,388 @@ var markerPlatarOmbo = L.marker([-7.783473236884777, 110.84818674466814]).addTo(
   }
 }).addTo(map);
 
-var dataRTRW1 = {
+
+//Gentan RW 1//
+var RT1RW1gentan = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "rt": "01",
+        "rw": "01",
+        "nama": "RT 01 / RW 01"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [110.8358203938306,-7.767149583383002],
+          [110.83365011095651,-7.770005219616181],
+          [110.83436170683706,-7.770357751157093],
+          [110.83461098760597,-7.7724023548861965],
+          [110.83553593507128,-7.772155612228659],
+          [110.83777732406963,-7.76855971568385],
+          [110.8358203938306,-7.767149583383002]
+        ]]
+      }
+    }
+  ]
+};
+
+  // --- Tambahkan layer RT/RW ---
+  var rtLayer = L.geoJSON(RT1RW1gentan, {
+    style: function(feature) {
+      return {
+        color: "blue",
+        weight: 2,
+        fillColor: "cyan",
+        fillOpacity: 0.3
+      };
+    },
+    onEachFeature: function (feature, layer) {
+      layer.bindPopup(`
+        <b>${feature.properties.nama}</b><br>
+        RT: ${feature.properties.rt}<br>
+        RW: ${feature.properties.rw}
+      `);
+    }
+  }).addTo(map);
+
+  var polygonLayer = L.geoJSON(RT1RW1gentan, {
+  style: {
+    color: "red",
+    weight: 2,
+    fillColor: "yellow",
+    fillOpacity: 0.3
+  },
+  onEachFeature: function (feature, layer) {
+    layer.bindPopup(`
+      <b>Informasi Dusun Gentan RT 01/RW 01</b><br>
+      <table border="1" cellspacing="0" cellpadding="5">
+        <tr>
+          <td><b>Jenis Kelamin</b></td>
+          <td> Perempuan </td>
+          <td> Laki-laki </td>
+        </tr>
+        <tr>
+          <td><b>Jumlah Penduduk</b></td>
+          <td>69 Jiwa</td>
+          <td>71 Jiwa</td>
+        </tr>
+      </table>
+    `);
+  }
+}).addTo(map);
+
+var RT2RW1gentan = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "rt": "02",
+        "rw": "01",
+        "nama": "RT 02 / RW 01"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [110.83774174328101,-7.768594969980811],
+          [110.83553593097542,-7.772120362429533],
+          [110.83724361746732,-7.773495223923845],
+          [110.83888032949994,-7.769476322463049],
+          [110.83774174328101,-7.768594969980811]
+        ]]
+      }
+    }
+  ]
+};
+
+
+
+  // --- Tambahkan layer RT/RW ---
+  var rtLayer = L.geoJSON(RT2RW1gentan, {
+    style: function(feature) {
+      return {
+        color: "blue",
+        weight: 2,
+        fillColor: "cyan",
+        fillOpacity: 0.3
+      };
+    },
+    onEachFeature: function (feature, layer) {
+      layer.bindPopup(`
+        <b>${feature.properties.nama}</b><br>
+        RT: ${feature.properties.rt}<br>
+        RW: ${feature.properties.rw}
+      `);
+    }
+  }).addTo(map);
+
+  var polygonLayer = L.geoJSON(RT2RW1gentan, {
+  style: {
+    color: "red",
+    weight: 2,
+    fillColor: "blue",
+    fillOpacity: 0.3
+  },
+  onEachFeature: function (feature, layer) {
+    layer.bindPopup(`
+      <b>Informasi Dusun Gentan RT 02/RW 01</b><br>
+      <table border="1" cellspacing="0" cellpadding="5">
+        <tr>
+          <td><b>Jenis Kelamin</b></td>
+          <td> Perempuan </td>
+          <td> Laki-laki </td>
+        </tr>
+        <tr>
+          <td><b>Jumlah Penduduk</b></td>
+          <td>38 Jiwa</td>
+          <td>36 Jiwa</td>
+        </tr>
+      </table>
+    `);
+  }
+}).addTo(map);
+
+
+//Gentan RW 2//
+  var RT1RW2gentan = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "rt": "01",
+        "rw": "02",
+        "nama": "RT 01 / RW 02"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [110.83891591000264,-7.76944106879364],
+          [110.83663880473966,-7.774799419503552],
+          [110.83827539471213,-7.7755045170264765],
+          [110.84065943653115,-7.770604309025728],
+          [110.83891591000264,-7.76944106879364]  
+        ]]
+      }
+    }
+  ]
+};
+
+
+ // --- Tambahkan layer RT/RW ---
+  var rtLayer = L.geoJSON(RT1RW2gentan, {
+    style: function(feature) {
+      return {
+        color: "blue",
+        weight: 2,
+        fillColor: "cyan",
+        fillOpacity: 0.3
+      };
+    },
+    onEachFeature: function (feature, layer) {
+      layer.bindPopup(`
+        <b>${feature.properties.nama}</b><br>
+        RT: ${feature.properties.rt}<br>
+        RW: ${feature.properties.rw}
+      `);
+    }
+  }).addTo(map);
+
+  var polygonLayer = L.geoJSON(RT1RW2gentan, {
+  style: {
+    color: "green",
+    weight: 2,
+    fillColor: "red",
+    fillOpacity: 0.3
+  },
+  onEachFeature: function (feature, layer) {
+    layer.bindPopup(`
+       <b>Informasi Dusun Gentan RT 01/RW 02</b><br>
+      <table border="1" cellspacing="0" cellpadding="5">
+        <tr>
+          <td><b>Jenis Kelamin</b></td>
+          <td> Perempuan </td>
+          <td> Laki-laki </td>
+        </tr>
+        <tr>
+          <td><b>Jumlah Penduduk</b></td>
+          <td>63 Jiwa</td>
+          <td>45 Jiwa</td>
+        </tr>
+      </table>
+    `);
+  }
+}).addTo(map);
+
+
+// baseng //
+var RT1RW4baseng = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "rt": "01",
+        "rw": "09",
+        "nama": "RT 01 / RW 09"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+            [110.84302152711308, -7.780948835822457],
+            [110.84328663065003, -7.78104264392023],
+            [110.8431067389655, -7.782187101029066],
+            [110.84352333023554, -7.782440382098343],
+            [110.8440346013412, -7.782712424558227],
+            [110.8442144930275, -7.78223400494295],
+            [110.84446066059621, -7.7814553993039794],
+            [110.84467842421537, -7.780986359064244],
+            [110.84476363606598, -7.780648649766192],
+            [110.84501927161796, -7.779813756169958],
+            [110.84376002982106, -7.779532330987138],
+            [110.84302152711308, -7.780948835822457]
+
+        ]]
+      }
+    }
+  ]
+};
+
+  // --- Tambahkan layer RT/RW ---
+  var rtLayer = L.geoJSON(RT1RW4baseng, {
+    style: function(feature) {
+      return {
+        color: "blue",
+        weight: 2,
+        fillColor: "cyan",
+        fillOpacity: 0.3
+      };
+    },
+    onEachFeature: function (feature, layer) {
+      layer.bindPopup(`
+        <b>${feature.properties.nama}</b><br>
+        RT: ${feature.properties.rt}<br>
+        RW: ${feature.properties.rw}
+      `);
+    }
+  }).addTo(map);
+
+  var polygonLayer = L.geoJSON(RT1RW4baseng, {
+  style: {
+    color: "red",
+    weight: 2,
+    fillColor: "yellow",
+    fillOpacity: 0.3
+  },
+  onEachFeature: function (feature, layer) {
+    layer.bindPopup(`
+      <b>Informasi Dusun Baseng RT 1/RW 4</b><br>
+      <table border="1" cellspacing="0" cellpadding="5">
+        <tr>
+          <td><b>Jenis Kelamin</b></td>
+          <td> Laki-laki </td>
+          <td> Perempuan </td>
+        </tr>
+        <tr>
+          <td><b>Jumlah Penduduk</b></td>
+          <td>111 Jiwa</td>
+          <td>111 Jiwa</td>
+        </tr>
+      </table>
+    `);
+  }
+}).addTo(map);
+
+//Bodeh RW 8//
+var RT3RW8bodeh = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "rt": "03",
+        "rw": "08",
+        "nama": "RT 03 / RW 08"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+[110.83759936467129,-7.784136138160051],
+[110.83699602049768,-7.784298760966152],
+[110.83592725458391,-7.784382140267255],
+[110.83532134004838,-7.784840726127172],
+[110.8354391567633,-7.785299311483897],
+[110.83567479462704,-7.785466070236595],
+[110.83621886610854,-7.785854196985412],
+[110.83714481026601,-7.786371281272551],
+[110.83765828839057,-7.7860126583678095],
+[110.83794448931252,-7.78597929808177],
+[110.83837379069433,-7.785537274042753],
+[110.83867682696314,-7.785237031033475],
+[110.8383232846495,-7.784911767530886],
+[110.83826436093022,-7.784711605249527],
+[110.83815493116617,-7.784569823576817],
+[110.83779297117803,-7.7843946814428335],
+[110.83768354141392,-7.7842028590220735],
+[110.83759936467129,-7.784136138160051]
+        ]]
+      }
+    }
+  ]
+};
+
+  // --- Tambahkan layer RT/RW ---
+  var rtLayer = L.geoJSON(RT3RW8bodeh, {
+    style: function(feature) {
+      return {
+        color: "blue",
+        weight: 2,
+        fillColor: "cyan",
+        fillOpacity: 0.3
+      };
+    },
+    onEachFeature: function (feature, layer) {
+      layer.bindPopup(`
+        <b>${feature.properties.nama}</b><br>
+        RT: ${feature.properties.rt}<br>
+        RW: ${feature.properties.rw}
+      `);
+    }
+  }).addTo(map);
+
+  var polygonLayer = L.geoJSON(RT3RW8bodeh, {
+  style: {
+    color: "red",
+    weight: 2,
+    fillColor: "yellow",
+    fillOpacity: 0.3
+  },
+  onEachFeature: function (feature, layer) {
+    layer.bindPopup(`
+      <b>Informasi Dusun Bodeh RT 3/RW 8</b><br>
+      <table border="1" cellspacing="0" cellpadding="5">
+        <tr>
+          <td><b>Jenis Kelamin</b></td>
+          <td> Laki-laki </td>
+          <td> Perempuan </td>
+        </tr>
+        <tr>
+          <td><b>Jumlah Penduduk</b></td>
+          <td>32 Jiwa</td>
+          <td>33 Jiwa</td>
+        </tr>
+      </table>
+    `);
+  }
+}).addTo(map);
+
+
+
+//Bodeh Rw 9//
+var RT1RW9bodeh = {
   "type": "FeatureCollection",
   "features": [
     {
@@ -165,7 +546,7 @@ var dataRTRW1 = {
 };
 
   // --- Tambahkan layer RT/RW ---
-  var rtLayer = L.geoJSON(dataRTRW1, {
+  var rtLayer = L.geoJSON(RT1RW9bodeh, {
     style: function(feature) {
       return {
         color: "blue",
@@ -183,7 +564,7 @@ var dataRTRW1 = {
     }
   }).addTo(map);
 
-  var polygonLayer = L.geoJSON(dataRTRW1, {
+  var polygonLayer = L.geoJSON(RT1RW9bodeh, {
   style: {
     color: "red",
     weight: 2,
@@ -209,7 +590,7 @@ var dataRTRW1 = {
   }
 }).addTo(map);
 
-var dataRTRW2= {
+var RT2RW9bodeh= {
   "type": "FeatureCollection",
   "features": [
     {
@@ -269,7 +650,7 @@ var dataRTRW2= {
 
 
   // --- Tambahkan layer RT/RW ---
-  var rtLayer = L.geoJSON(dataRTRW2, {
+  var rtLayer = L.geoJSON(RT2RW9bodeh, {
     style: function(feature) {
       return {
         color: "blue",
@@ -287,7 +668,7 @@ var dataRTRW2= {
     }
   }).addTo(map);
 
-  var polygonLayer = L.geoJSON(dataRTRW2, {
+  var polygonLayer = L.geoJSON(RT2RW9bodeh, {
   style: {
     color: "red",
     weight: 2,
@@ -314,7 +695,7 @@ var dataRTRW2= {
 }).addTo(map);
 
 
-  var dataRTRW3= {
+  var RT3RW9bodeh= {
   "type": "FeatureCollection",
   "features": [
     {
@@ -356,7 +737,7 @@ var dataRTRW2= {
 
 
  // --- Tambahkan layer RT/RW ---
-  var rtLayer = L.geoJSON(dataRTRW3, {
+  var rtLayer = L.geoJSON(RT3RW9bodeh, {
     style: function(feature) {
       return {
         color: "blue",
@@ -374,7 +755,7 @@ var dataRTRW2= {
     }
   }).addTo(map);
 
-  var polygonLayer = L.geoJSON(dataRTRW3, {
+  var polygonLayer = L.geoJSON(RT3RW9bodeh, {
   style: {
     color: "green",
     weight: 2,
@@ -401,7 +782,7 @@ var dataRTRW2= {
 }).addTo(map);
 
 
-   var dataRTRW4= {
+   var RT4RW9bodeh= {
   "type": "FeatureCollection",
   "features": [
     {
@@ -461,7 +842,7 @@ var dataRTRW2= {
 };
 
   // --- Tambahkan layer RT/RW ---
-  var rtLayer = L.geoJSON(dataRTRW4, {
+  var rtLayer = L.geoJSON(RT4RW9bodeh, {
     style: function(feature) {
       return {
         color: "blue",
@@ -479,7 +860,7 @@ var dataRTRW2= {
     }
   }).addTo(map);
 
-  var polygonLayer = L.geoJSON(dataRTRW4, {
+  var polygonLayer = L.geoJSON(RT4RW9bodeh, {
   style: {
     color: "red",
     weight: 2,
@@ -512,7 +893,7 @@ var dataRTRW2= {
   };
 
   var overlayMaps = {
-    "Marker Gentan": marker,
+    "Marker Gentan": marker, markerSendangLele, markerBatuSeribu,markerMirikerep,markerPlatarOmbo,markerEmbungGentan,
     "Batas Gentan": batasgentanlayer
 
   };
