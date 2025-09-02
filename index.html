@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+
 <style>
   html, body, #map {
     height: 100%;
@@ -19,6 +20,10 @@
 </head>
 <body>
 <div id="map"></div>
+  <div style="position:absolute; top:525px; left:10px; z-index:1000;">
+  <img src="C:\Users\hp\Downloads\logo uii rmvepng.png" alt="Logo Desa" width="100">
+</div>
+
 
 <script>
   // Inisialisasi peta (center di Gentan)
@@ -3517,6 +3522,11 @@ var RT2RW9bodeh= {
     "Batas Gentan": batasgentanlayer
 
   };
+
+
+// Tambahkan ke peta
+map.addControl(new logo());
+
 
   L.control.layers(baseMaps, overlayMaps).addTo(map);
 
