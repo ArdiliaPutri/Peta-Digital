@@ -29,8 +29,8 @@
   <script src="RT1RW1gentan.js"></script>
   <!-- kalau ada RT lain, tinggal tambahin script-nya di sini -->
 <div style="position:absolute; bottom:10px; left:10px; z-index:1000;">
-  <img src="https://raw.githubusercontent.com/ArdiliaPutri/Peta-Digital/main/logo_stat_uii.png" 
-       alt="Logo Statistika UII" width="100">
+  <img src="https://raw.githubusercontent.com/ArdiliaPutri/Peta-Digital/main/KKN_UII_71.png" 
+       alt="Logo Statistika UII" width="125">
 </div>
 
 
@@ -55,27 +55,39 @@
 
   // --- Marker ---
   var marker = L.marker([-7.780572151120605, 110.84300739572141]).addTo(map)
-      .bindPopup('<b>Balai Desa Gentan</b><br><img src="https://nusantarapedia.net/wp-content/uploads/IMG_18042022_102238_700_x_525_piksel.jpg"alt="Balai Desa Gentan" width="200px">');
+      .bindPopup('<b>Balai Desa Gentan</b><br><img src="https://nusantarapedia.net/wp-content/uploads/IMG_18042022_102238_700_x_525_piksel.jpg"alt="Balai Desa Gentan" width="300px"> <br> Alamat: Jl. Batu Seribu No.10, Kec. Bulu, Kab. Sukoharjo, Jawa Tengah</br> ');
 
   var markerSendangLele = L.marker([-7.782089381635649, 110.84329596873556]).addTo(map)
-      .bindPopup('<b>Sendang Lele</b><br><img src="https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p2/230/2024/04/19/sendang-lele-ress-1321002123.jpg"alt="Sendang Lele" width="200px">');
+  .bindPopup(`
+    <div style="text-align:justify; max-width:250px;">
+      <b>Sendang Lele</b><br>
+      <img src="https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p2/230/2024/04/19/sendang-lele-ress-1321002123.jpg" 
+           alt="Sendang Lele" width="250px"><br>
+      Sendang Lele terletak di Baseng, Desa Gentan, Kecamatan Bulu, Kabupaten Sukoharjo. 
+      Sendang ini merupakan sumber air yang dihuni ikan lele berukuran besar, dengan panjang rata-rata hampir satu meter atau seukuran paha orang dewasa. 
+      Masyarakat setempat meyakini sendang ini memiliki nilai mistis. 
+      Konon, ikan lele di sini dianggap tidak biasa ada yang hanya terlihat berupa tulang atau kepala jika dipandang dengan mata tertentu. 
+      Selain itu, terdapat kepercayaan bahwa orang yang tidak menjaga sikap saat berada di hadapan lele-lele tersebut dapat mengalami kesurupan
+    </div>
+  `);
+
 
   var markerEmbungGentan = L.marker([-7.7847281922239135, 110.83788842348315]).addTo(map)
-      .bindPopup('<b>Embung Gentan</b>');
+      .bindPopup('<div style="text-align:justify; max-width:250px;"> <b>Embung Gentan</b> <br> Embung Sebo Menggolo atau sering disebut embung gentan yang terletak di Pacinan, Gentan, Kecamatan Bulu, Kabupaten Sukoharjo, adalah destinasi wisata alam dengan tiket masuk gratis. Fasilitas yang tersedia termasuk Tim SAR untuk keamanan pengunjung dan penangkaran ikan yang menarik untuk dikunjungi. Tempat ini menawarkan suasana alami yang tenang, cocok untuk bersantai sambil menikmati keindahan sekitar </br>');
 
   var markerBatuSeribu = L.marker([-7.78666222191999, 110.8386166230242]).addTo(map)
-      .bindPopup('<b>Wisata Alam Batu Seribu</b><br><img src="https://sukoharjonews.com/wp-content/uploads/2023/12/mini_IMG_2001.jpg"alt="Wisata Batu Seribu" width="200px">');
+      .bindPopup('<div style="text-align:justify; max-width:250px;"><b> Batu Seribu</b><br> <img src="https://tse4.mm.bing.net/th/id/OIP.6wMeuLT5lW1Inbnw9oP3bAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Batu Seribu" width="250px"> <br> Batu Seribu yang terletak di Desa Gentan, Kecamatan Bulu, Kabupaten Sukoharjo, adalah destinasi wisata alam dengan tiket masuk terjangkau seharga Rp5.000. Tempat ini menawarkan fasilitas parkiran yang luas serta kolam renang yang bisa dinikmati dengan biaya tambahan Rp5.000. Batu Seribu menjadi pilihan yang menarik untuk rekreasi keluarga, dengan suasana alami yang segar dan kolam renang yang menyegarkan </div>');
 
 var markerPlatarOmbo = L.marker([-7.783473236884777, 110.84818674466814]).addTo(map)
   .bindPopup(`
-    <b>Platar Ombo</b><br>
-    <img src="https://jatengtravelguide.info/images/1622779324.png" alt="Platar Ombo" width="200px">
+    <div style="text-align:justify; max-width:250px;"> <b>Platar Ombo</b><br>
+    <img src="https://jatengtravelguide.info/images/1622779324.png" alt="Platar Ombo" width="250px"> <br> Platar Ombo terletak di Desa Gentan, Kecamatan Bulu, Kabupaten Sukoharjo. Tempat ini berupa puncak bukit batu yang dapat dicapai dengan pendakian singkat sekitar 5–10 menit. Dari puncak, pengunjung dapat menikmati panorama pedesaan, perbukitan, Gunung Sepikul di utara, Puncak Gajah Mungkur di selatan, serta Gunung Lawu di timur saat cuaca cerah. Platar Ombo juga menjadi spot favorit untuk melihat matahari terbit, hamparan persawahan, dan matahari terbenam. Fasilitas yang tersedia antara lain area berkemah dengan tarif parkir terjangkau, sementara tiket masuk belum diberlakukan </br>
   `);
 
   var markerMirikerep = L.marker([-7.78179520905591, 110.82935591502977]).addTo(map)
-      .bindPopup(`
-    <b>Miri Kerep</b><br>
-    <img src="https://lh5.googleusercontent.com/p/AF1QipPwsqNa23AjzV_UX_BqFnJMFFPIWwW_CJhGvPno=w800-h500-k-no" alt="Miri Kerep" width="200px">
+      .bindPopup(`<div style="text-align:justify; max-width:250px;">
+    <b>Air Terjun Mirikerep</b><br>
+    <img src="https://lh5.googleusercontent.com/p/AF1QipPwsqNa23AjzV_UX_BqFnJMFFPIWwW_CJhGvPno=w800-h500-k-no" alt="Miri Kerep" width="250px"> <br> Air Terjun Mirikerep yang terletak di Gentan, Kecamatan Bulu, Kabupaten Sukoharjo, adalah destinasi wisata alam dengan tiket masuk gratis. Tempat ini menjadi ramai saat musim hujan karena mengandalkan air hujan untuk mengalir. Namun, selama musim kering, Air Terjun Mirikerep menawarkan keindahan alam yang menawan dan menjadi pilihan menarik bagi pecinta alam yang ingin merasakan suasana yang berbeda </br>
   `);
    // 🔹 Fungsi untuk bikin label di tengah polygon
     function addLabelToPolygon(feature, layer) {
@@ -117,32 +129,95 @@ var markerPlatarOmbo = L.marker([-7.783473236884777, 110.84818674466814]).addTo(
   },
   onEachFeature: function (feature, layer) {
     layer.bindPopup(`
-      <b>Informasi Desa Gentan</b><br>
-      <table border="1" cellspacing="0" cellpadding="5">
-        <tr>
-          <td><b>Nama Desa</b></td>
-          <td>Gentan</td>
-        </tr>
-        <tr>
-          <td><b>Kecamatan</b></td>
-          <td>Bulu</td>
-        </tr>
-        <tr>
-          <td><b>Kabupaten</b></td>
-          <td>Sukoharjo</td>
-        </tr>
-        <tr>
-          <td><b>Luas Wilayah</b></td>
-          <td>± 450 Ha</td>
-        </tr>
-        <tr>
-          <td><b>Jumlah Penduduk</b></td>
-          <td>± 3.200 Jiwa</td>
-        </tr>
-      </table>
-    `);
+      <div style="max-height:300px; overflow-y:auto;">
+        <b>Informasi Desa Gentan</b><br>
+        <table border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse; width:100%;">
+          <tr>
+            <td><b>Nama Desa</b></td>
+            <td>Gentan</td>
+          </tr>
+          <tr>
+            <td><b>Kecamatan</b></td>
+            <td>Bulu</td>
+          </tr>
+          <tr>
+            <td><b>Kabupaten</b></td>
+            <td>Sukoharjo</td>
+          </tr>
+          <tr>
+            <td><b>Luas Wilayah</b></td>
+            <td>± 450 Ha</td>
+          </tr>
+          <tr>
+            <td><b>Jumlah Penduduk</b></td>
+            <td>± 3326 Jiwa</td>
+          </tr>
+          <tr>
+            <td><b>Data Dukuh</b></td>
+            <td>
+              <table border="1" cellspacing="0" cellpadding="4" style="border-collapse:collapse; width:100%; text-align:center; font-size:11px;">
+                <tr><th>Dukuh</th><th>Penduduk</th><th>Detail RT/RW</th></tr>
+                
+                <tr>
+                  <td>Dukuh Gentan</td><td>644</td>
+                  <td>
+                    <table border="1" cellspacing="0" cellpadding="3" 
+                           style="border-collapse:collapse; width:100%; text-align:center;">
+                      <tr><th>RW</th><th>RT</th><th>Penduduk</th></tr>
+                      <tr><td rowspan="2">01</td><td>01</td><td>140</td></tr>
+                      <tr><td>02</td><td>74</td></tr>
+                      <tr><td rowspan="2">02</td><td>01</td><td>108</td></tr>
+                      <tr><td>02</td><td>141</td></tr>
+                      <tr><td rowspan="2">03</td><td>01</td><td>115</td></tr>
+                      <tr><td>02</td><td>66</td></tr>
+                    </table>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>Dukuh Baseng</td><td>1538</td>
+                  <td>
+                    <table border="1" cellspacing="0" cellpadding="3" 
+                           style="border-collapse:collapse; width:100%; text-align:center;">
+                      <tr><th>RW</th><th>RT</th><th>Penduduk</th></tr>
+                      <tr><td rowspan="2">04</td><td>01</td><td>328</td></tr>
+                      <tr><td>02</td><td>167</td></tr>
+                      <tr><td rowspan="3">05</td><td>01</td><td>248</td></tr>
+                      <tr><td>02</td><td>252</td></tr>
+                      <tr><td>03</td><td>215</td></tr>
+                      <tr><td rowspan="2">06</td><td>01</td><td>150</td></tr>
+                      <tr><td>02</td><td>178</td></tr>
+                    </table>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>Dukuh Bodeh</td><td>1144</td>
+                  <td>
+                    <table border="1" cellspacing="0" cellpadding="3" 
+                           style="border-collapse:collapse; width:100%; text-align:center;">
+                      <tr><th>RW</th><th>RT</th><th>Penduduk</th></tr>
+                      <tr><td rowspan="2">07</td><td>01</td><td>256</td></tr>
+                      <tr><td>02</td><td>125</td></tr>
+                      <tr><td rowspan="3">08</td><td>01</td><td>149</td></tr>
+                      <tr><td>02</td><td>231</td></tr>
+                      <tr><td>03</td><td>65</td></tr>
+                      <tr><td rowspan="4">09</td><td>01</td><td>97</td></tr>
+                      <tr><td>02</td><td>72</td></tr>
+                      <tr><td>03</td><td>91</td></tr>
+                      <tr><td>04</td><td>58</td></tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    `, { maxWidth: 450 }); // atur max lebar popup
   }
 }).addTo(map);
+
 
 
 //Gentan RW 1//
@@ -211,7 +286,7 @@ var RT1RW1gentan = {
     color: "red",
     weight: 2,
     fillColor: "green",
-    fillOpacity: 0.3
+    fillOpacity: 0.1
   },
   onEachFeature: function (feature, layer) {
     layer.bindPopup(`
@@ -768,7 +843,7 @@ var RT1RW4baseng = {
         color: "red",
         weight: 2,
         fillColor: "pink",
-        fillOpacity: 0.3
+        fillOpacity: 0.5
       };
     },
     onEachFeature: function (feature, layer) {
@@ -785,7 +860,7 @@ var RT1RW4baseng = {
     color: "red",
     weight: 2,
     fillColor: "pink",
-    fillOpacity: 0.3
+    fillOpacity: 0.5
   },
   onEachFeature: function (feature, layer) {
     layer.bindPopup(`
@@ -914,7 +989,7 @@ var RT2RW4baseng = {
         color: "red",
         weight: 2,
         fillColor: "pink",
-        fillOpacity: 0.3
+        fillOpacity: 0.5
       };
     },
     onEachFeature: function (feature, layer) {
@@ -931,7 +1006,7 @@ var RT2RW4baseng = {
     color: "red",
     weight: 2,
     fillColor: "pink",
-    fillOpacity: 0.3
+    fillOpacity: 0.5
   },
   onEachFeature: function (feature, layer) {
     layer.bindPopup(`
@@ -1044,7 +1119,7 @@ var RT2RW4baseng = {
         color: "red",
         weight: 2,
         fillColor: "pink",
-        fillOpacity: 0.3
+        fillOpacity: 0.5
       };
     },
     onEachFeature: function (feature, layer) {
@@ -1061,7 +1136,7 @@ var RT2RW4baseng = {
     color: "red",
     weight: 2,
     fillColor: "pink",
-    fillOpacity: 0.3
+    fillOpacity: 0.5
   },
   onEachFeature: function (feature, layer) {
     layer.bindPopup(`
@@ -1189,7 +1264,7 @@ var RT2RW4baseng = {
         color: "red",
         weight: 2,
         fillColor: "pink",
-        fillOpacity: 0.3
+        fillOpacity: 0.5
       };
     },
     onEachFeature: function (feature, layer) {
@@ -1206,7 +1281,7 @@ var RT2RW4baseng = {
     color: "red",
     weight: 2,
     fillColor: "pink",
-    fillOpacity: 0.3
+    fillOpacity: 0.5
   },
   onEachFeature: function (feature, layer) {
     layer.bindPopup(`
@@ -1356,7 +1431,7 @@ var RT2RW4baseng = {
     color: "red",
     weight: 2,
     fillColor: "pink",
-    fillOpacity: 0.3
+    fillOpacity: 0.5
   },
   onEachFeature: function (feature, layer) {
     layer.bindPopup(`
@@ -1454,7 +1529,7 @@ var RT2RW4baseng = {
         color: "red",
         weight: 2,
         fillColor: "pink",
-        fillOpacity: 0.3
+        fillOpacity: 0.5
       };
     },
     onEachFeature: function (feature, layer) {
@@ -1471,7 +1546,7 @@ var RT2RW4baseng = {
     color: "red",
     weight: 2,
     fillColor: "pink",
-    fillOpacity: 0.3
+    fillOpacity: 0.5
   },
   onEachFeature: function (feature, layer) {
     layer.bindPopup(`
@@ -1712,7 +1787,7 @@ var RT2RW4baseng = {
         color: "red",
         weight: 2,
         fillColor: "pink",
-        fillOpacity: 0.3
+        fillOpacity: 0.5
       };
     },
     onEachFeature: function (feature, layer) {
@@ -1729,7 +1804,7 @@ var RT2RW4baseng = {
     color: "red",
     weight: 2,
     fillColor: "pink",
-    fillOpacity: 0.3
+    fillOpacity: 0.5
   },
   onEachFeature: function (feature, layer) {
     layer.bindPopup(`
@@ -3645,7 +3720,12 @@ var RT2RW9bodeh= {
   };
 
   var overlayMaps = {
-    "Marker Gentan": marker, markerSendangLele, markerBatuSeribu,markerMirikerep,markerPlatarOmbo,markerEmbungGentan,
+    "Balai Desa Gentan": marker,
+    "Wisata Sendang Lele": markerSendangLele,
+    "Wisata Batu Seribu": markerBatuSeribu,
+    "Wisata Miri Kerep": markerMirikerep,
+    "Wisata Platar Ombo": markerPlatarOmbo,
+    "Wisata Embung Gentan": markerEmbungGentan,
     "Batas Gentan": batasgentanlayer
 
   };
