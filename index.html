@@ -9,20 +9,30 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-
 <style>
-  html, body, #map {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-  }
+ #map { height: 600px; width: 100%; }
+
+    /* Label styling */
+    .polygon-label {
+      font-size: 12px;
+      font-weight: bold;
+      color: black;
+      text-shadow: 1px 1px 2px white;
+    }
 </style>
 </head>
 <body>
 <div id="map"></div>
-  <div style="position:absolute; top:525px; left:10px; z-index:1000;">
-  <img src="Gentan/image/logo_stat_uii.png" alt="Logo Stat UII" width="100">
+<!-- JS Leaflet -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- Load GeoJSON RT/RW di sini -->
+  <script src="RT1RW1gentan.js"></script>
+  <!-- kalau ada RT lain, tinggal tambahin script-nya di sini -->
+<div style="position:absolute; bottom:10px; left:10px; z-index:1000;">
+  <img src="https://raw.githubusercontent.com/ArdiliaPutri/Peta-Digital/main/logo_stat_uii.png" 
+       alt="Logo Statistika UII" width="100">
 </div>
+
 
 
 <script>
@@ -67,6 +77,21 @@ var markerPlatarOmbo = L.marker([-7.783473236884777, 110.84818674466814]).addTo(
     <b>Miri Kerep</b><br>
     <img src="https://lh5.googleusercontent.com/p/AF1QipPwsqNa23AjzV_UX_BqFnJMFFPIWwW_CJhGvPno=w800-h500-k-no" alt="Miri Kerep" width="200px">
   `);
+   // 🔹 Fungsi untuk bikin label di tengah polygon
+    function addLabelToPolygon(feature, layer) {
+      var center = layer.getBounds().getCenter();
+      var labelText = "RT " + feature.properties.rt + " / RW " + feature.properties.rw;
+
+      L.marker(center, {
+        icon: L.divIcon({
+          className: "polygon-label",
+          html: labelText,
+          iconSize: [100, 20],
+          iconAnchor: [50, 10]
+        }),
+        interactive: false
+      }).addTo(map);
+    }
 
 
   // --- Polygon contoh batas wilayah (dummy GeoJSON) ---
@@ -134,18 +159,33 @@ var RT1RW1gentan = {
       "geometry": {
         "type": "Polygon",
         "coordinates": [[
-          [110.8358203938306,-7.767149583383002],
-          [110.83365011095651,-7.770005219616181],
-          [110.83436170683706,-7.770357751157093],
-          [110.83461098760597,-7.7724023548861965],
-          [110.83553593507128,-7.772155612228659],
-          [110.83777732406963,-7.76855971568385],
-          [110.8358203938306,-7.767149583383002]
+          [110.83583698872104, -7.767161524534544],
+          [110.83576200194763, -7.767205766122761],
+          [110.83551816077883, -7.7675304899345665],
+          [110.83536322092812, -7.767791199094109],
+          [110.83475536287864, -7.768652148159653],
+          [110.83419134865184, -7.7694355205591386],
+          [110.8336483335894, -7.770031635358421],
+          [110.83371153194489, -7.770006783625355],
+          [110.83430616330378, -7.770327097504577],
+          [110.83422027914511, -7.770503668338108],
+          [110.83416912474785, -7.770612472488722],
+          [110.83422093421089, -7.77065707588477],
+          [110.83427734113059, -7.7710159468232405],
+          [110.83437960477406, -7.771406276960533],
+          [110.8344620623429, -7.771699729074129],
+          [110.83446794586331, -7.771786261085197],
+          [110.83448162945544, -7.771951474628146],
+          [110.83461098760603, -7.772400593837517],
+          [110.83554043982235, -7.772120375911783],
+          [110.83776704847668, -7.76855795463517],
+          [110.83583698872104, -7.767161524534544]
         ]]
       }
     }
   ]
 };
+
 
   // --- Tambahkan layer RT/RW ---
   var rtLayer = L.geoJSON(RT1RW1gentan, {
@@ -168,9 +208,9 @@ var RT1RW1gentan = {
 
   var polygonLayer = L.geoJSON(RT1RW1gentan, {
   style: {
-    color: "green",
+    color: "red",
     weight: 2,
-    fillColor: "yellow",
+    fillColor: "green",
     fillOpacity: 0.3
   },
   onEachFeature: function (feature, layer) {
@@ -191,6 +231,35 @@ var RT1RW1gentan = {
     `);
   }
 }).addTo(map);
+// 🔹 Contoh untuk polygon RT 01 / RW 01
+    var rt1rw1Layer = L.geoJSON(RT1RW1gentan, {
+      style: {
+        color: "red",
+        weight: 2,
+        fillColor: "green",
+        fillOpacity: 0.3
+      },
+      onEachFeature: function (feature, layer) {
+        layer.bindPopup(`
+          <b>Informasi Dusun Gentan RT ${feature.properties.rt}/RW ${feature.properties.rw}</b><br>
+          <table border="1" cellspacing="0" cellpadding="5">
+            <tr>
+              <td><b>Jenis Kelamin</b></td>
+              <td> Perempuan </td>
+              <td> Laki-laki </td>
+            </tr>
+            <tr>
+              <td><b>Jumlah Penduduk</b></td>
+              <td>69 Jiwa</td>
+              <td>71 Jiwa</td>
+            </tr>
+          </table>
+        `);
+
+        // 🔹 Tambahin label otomatis
+        addLabelToPolygon(feature, layer);
+      }
+    }).addTo(map);
 
 var RT2RW1gentan = {
   "type": "FeatureCollection",
@@ -205,11 +274,11 @@ var RT2RW1gentan = {
       "geometry": {
         "type": "Polygon",
         "coordinates": [[
-          [110.83774174328101,-7.768594969980811],
-          [110.83553593097542,-7.772120362429533],
-          [110.83724361746732,-7.773495223923845],
-          [110.83888032949994,-7.769476322463049],
-          [110.83774174328101,-7.768594969980811]
+          [110.83776740847526, -7.768564291456087],
+          [110.83553333828979, -7.772130409045118],
+          [110.83712783507019, -7.773403795764466],
+          [110.838903537666, -7.76938605769999],
+          [110.83776740847526, -7.768564291456087]
         ]]
       }
     }
@@ -241,7 +310,7 @@ var RT2RW1gentan = {
   style: {
     color: "red",
     weight: 2,
-    fillColor: "blue",
+    fillColor: "green",
     fillOpacity: 0.3
   },
   onEachFeature: function (feature, layer) {
@@ -260,12 +329,15 @@ var RT2RW1gentan = {
         </tr>
       </table>
     `);
+     // 🔹 Tambahin label otomatis
+    addLabelToPolygon(feature, layer);
   }
 }).addTo(map);
 
 
+
 //Gentan RW 2//
-  var RT1RW2gentan = {
+var RT1RW2gentan = {
   "type": "FeatureCollection",
   "features": [
     {
@@ -278,16 +350,21 @@ var RT2RW1gentan = {
       "geometry": {
         "type": "Polygon",
         "coordinates": [[
-          [110.83891591000264,-7.76944106879364],
-          [110.83663880473966,-7.774799419503552],
-          [110.83827539471213,-7.7755045170264765],
-          [110.84065943653115,-7.770604309025728],
-          [110.83891591000264,-7.76944106879364]  
+          [110.83891104903353, -7.769387727061712],
+          [110.83654352026554, -7.7747105643664725],
+          [110.83809464116939, -7.7754356356154375],
+          [110.84055800595962, -7.770644508690509],
+          [110.84018797089895, -7.77034685214114],
+          [110.83975707749838, -7.770099445202408],
+          [110.83961310457452, -7.769939652491805],
+          [110.8394648637352, -7.769792545980316],
+          [110.83891104903353, -7.769387727061712]
         ]]
       }
     }
   ]
 };
+
 
 
  // --- Tambahkan layer RT/RW ---
@@ -311,9 +388,9 @@ var RT2RW1gentan = {
 
   var polygonLayer = L.geoJSON(RT1RW2gentan, {
   style: {
-    color: "green",
+    color: "red",
     weight: 2,
-    fillColor: "red",
+    fillColor: "green",
     fillOpacity: 0.3
   },
   onEachFeature: function (feature, layer) {
@@ -332,6 +409,8 @@ var RT2RW1gentan = {
         </tr>
       </table>
     `);
+    addLabelToPolygon(feature, layer);
+
   }
 }).addTo(map);
 
@@ -348,20 +427,28 @@ var RT2RW2Gentan = {
       "geometry": {
         "type": "Polygon",
         "coordinates": [[
-          [110.84055671683996, -7.770618021586941],
-          [110.83868827053072, -7.774295223240756],
-          [110.83779244010805, -7.77604505271475],
-          [110.83883346087248, -7.776872520257328],
-          [110.8405845476853, -7.7768302036392924],
-          [110.8405418382498, -7.775264485760317],
-          [110.84126789863552, -7.77543375283976],
-          [110.84272001940673, -7.772133032479488],
-          [110.84055671683996, -7.770618021586941] 
+          [110.84056005011843, -7.770646242587574],
+          [110.83868932238857, -7.774297663956872],
+          [110.8377934919659, -7.776047493430866],
+          [110.83883451273033, -7.776874960973444],
+          [110.84058559954315, -7.776832644355409],
+          [110.84054289010766, -7.775266926476434],
+          [110.84126895049337, -7.775436193555876],
+          [110.8426975610912, -7.772154885029735],
+          [110.8422056615362, -7.771875556375214],
+          [110.84193228322488, -7.7716737741343955],
+          [110.84162755801574, -7.771471991893577],
+          [110.84110692718012, -7.771079469125503],
+          [110.84092286094528, -7.770922513129291],
+          [110.84082692709276, -7.7708558101260685],
+          [110.84072639084643, -7.77078377714262],
+          [110.84056005011843, -7.770646242587574]
         ]]
       }
     }
   ]
 };
+
 
   // --- Tambahkan layer RT/RW ---
   var rtLayer = L.geoJSON(RT2RW2Gentan, {
@@ -386,7 +473,7 @@ var RT2RW2Gentan = {
   style: {
     color: "red",
     weight: 2,
-    fillColor: "yellow",
+    fillColor: "green",
     fillOpacity: 0.3
   },
   onEachFeature: function (feature, layer) {
@@ -405,10 +492,12 @@ var RT2RW2Gentan = {
         </tr>
       </table>
     `);
+    addLabelToPolygon(feature, layer);
+
   }
 }).addTo(map);
 
-var RT1RW3Gentan= {
+var RT1RW3Gentan = {
   "type": "FeatureCollection",
   "features": [
     {
@@ -423,11 +512,11 @@ var RT1RW3Gentan= {
         "coordinates": [[
           [110.8388321145307, -7.776861549255415],
           [110.83900771860851, -7.778881809183801],
-          [110.84260726210931, -7.778881809183801],
+          [110.84258640355074, -7.778911332916124],
           [110.84257617412209, -7.775679575871052],
           [110.840561939299, -7.7752890925203815],
           [110.84059960257389, -7.776842756359912],
-          [110.8388321145307, -7.776861549255415] 
+          [110.8388321145307, -7.776861549255415]
         ]]
       }
     }
@@ -459,7 +548,7 @@ var RT1RW3Gentan= {
   style: {
     color: "red",
     weight: 2,
-    fillColor: "blue",
+    fillColor: "green",
     fillOpacity: 0.3
   },
   onEachFeature: function (feature, layer) {
@@ -478,11 +567,13 @@ var RT1RW3Gentan= {
         </tr>
       </table>
     `);
+    addLabelToPolygon(feature, layer);
+
   }
 }).addTo(map);
 
 
-  var RT2RW3Gentan= {
+var RT2RW3Gentan = {
   "type": "FeatureCollection",
   "features": [
     {
@@ -512,7 +603,7 @@ var RT1RW3Gentan= {
           [110.84313754175037, -7.782227856751035],
           [110.84332182606374, -7.781048305280478],
           [110.84304360561867, -7.780898827472896],
-          [110.84375231411371, -7.7795461807571655]  
+          [110.84375231411371, -7.7795461807571655]
         ]]
       }
     }
@@ -543,7 +634,7 @@ var RT1RW3Gentan= {
   style: {
     color: "red",
     weight: 2,
-    fillColor: "blue",
+    fillColor: "green",
     fillOpacity: 0.3
   },
   onEachFeature: function (feature, layer) {
@@ -562,6 +653,8 @@ var RT1RW3Gentan= {
         </tr>
       </table>
     `);
+    addLabelToPolygon(feature, layer);
+
   }
 }).addTo(map);
 
@@ -674,7 +767,7 @@ var RT1RW4baseng = {
       return {
         color: "red",
         weight: 2,
-        fillColor: "cyan",
+        fillColor: "pink",
         fillOpacity: 0.3
       };
     },
@@ -691,7 +784,7 @@ var RT1RW4baseng = {
   style: {
     color: "red",
     weight: 2,
-    fillColor: "yellow",
+    fillColor: "pink",
     fillOpacity: 0.3
   },
   onEachFeature: function (feature, layer) {
@@ -710,6 +803,8 @@ var RT1RW4baseng = {
         </tr>
       </table>
     `);
+    addLabelToPolygon(feature, layer);
+
   }
 }).addTo(map);
 
@@ -818,7 +913,7 @@ var RT2RW4baseng = {
       return {
         color: "red",
         weight: 2,
-        fillColor: "purple",
+        fillColor: "pink",
         fillOpacity: 0.3
       };
     },
@@ -835,7 +930,7 @@ var RT2RW4baseng = {
   style: {
     color: "red",
     weight: 2,
-    fillColor: "blue",
+    fillColor: "pink",
     fillOpacity: 0.3
   },
   onEachFeature: function (feature, layer) {
@@ -854,6 +949,8 @@ var RT2RW4baseng = {
         </tr>
       </table>
     `);
+    addLabelToPolygon(feature, layer);
+
   }
 }).addTo(map);
 
@@ -946,7 +1043,7 @@ var RT2RW4baseng = {
       return {
         color: "red",
         weight: 2,
-        fillColor: "cyan",
+        fillColor: "pink",
         fillOpacity: 0.3
       };
     },
@@ -963,7 +1060,7 @@ var RT2RW4baseng = {
   style: {
     color: "red",
     weight: 2,
-    fillColor: "red",
+    fillColor: "pink",
     fillOpacity: 0.3
   },
   onEachFeature: function (feature, layer) {
@@ -982,27 +1079,11 @@ var RT2RW4baseng = {
         </tr>
       </table>
     `);
+    addLabelToPolygon(feature, layer);
+
   }
 }).addTo(map);
 
-  // --- Tambahkan layer RT/RW ---
-  var rtLayer = L.geoJSON(RT2RW5baseng, {
-    style: function(feature) {
-      return {
-        color: "blue",
-        weight: 2,
-        fillColor: "cyan",
-        fillOpacity: 0.3
-      };
-    },
-    onEachFeature: function (feature, layer) {
-      layer.bindPopup(`
-        <b>${feature.properties.nama}</b><br>
-        RT: ${feature.properties.rt}<br>
-        RW: ${feature.properties.rw}
-      `);
-    }
-  }).addTo(map);
 
    var RT2RW5baseng = {
   "type": "FeatureCollection",
@@ -1101,11 +1182,30 @@ var RT2RW4baseng = {
   ]
 };
 
+// --- Tambahkan layer RT/RW ---
+  var rtLayer = L.geoJSON(RT2RW5baseng, {
+    style: function(feature) {
+      return {
+        color: "red",
+        weight: 2,
+        fillColor: "pink",
+        fillOpacity: 0.3
+      };
+    },
+    onEachFeature: function (feature, layer) {
+      layer.bindPopup(`
+        <b>${feature.properties.nama}</b><br>
+        RT: ${feature.properties.rt}<br>
+        RW: ${feature.properties.rw}
+      `);
+    }
+  }).addTo(map);
+  
   var polygonLayer = L.geoJSON(RT2RW5baseng, {
   style: {
     color: "red",
     weight: 2,
-    fillColor: "green",
+    fillColor: "pink",
     fillOpacity: 0.3
   },
   onEachFeature: function (feature, layer) {
@@ -1124,6 +1224,8 @@ var RT2RW4baseng = {
         </tr>
       </table>
     `);
+    addLabelToPolygon(feature, layer);
+
   }
 }).addTo(map);
 
@@ -1236,7 +1338,7 @@ var RT2RW4baseng = {
       return {
         color: "red",
         weight: 2,
-        fillColor: "orange",
+        fillColor: "pink",
         fillOpacity: 0.3
       };
     },
@@ -1253,7 +1355,7 @@ var RT2RW4baseng = {
   style: {
     color: "red",
     weight: 2,
-    fillColor: "blue",
+    fillColor: "pink",
     fillOpacity: 0.3
   },
   onEachFeature: function (feature, layer) {
@@ -1272,6 +1374,8 @@ var RT2RW4baseng = {
         </tr>
       </table>
     `);
+    addLabelToPolygon(feature, layer);
+
   }
 }).addTo(map);
 
@@ -1385,6 +1489,8 @@ var RT2RW4baseng = {
         </tr>
       </table>
     `);
+    addLabelToPolygon(feature, layer);
+
   }
 }).addTo(map);
 
@@ -1605,7 +1711,7 @@ var RT2RW4baseng = {
       return {
         color: "red",
         weight: 2,
-        fillColor: "grey",
+        fillColor: "pink",
         fillOpacity: 0.3
       };
     },
@@ -1622,7 +1728,7 @@ var RT2RW4baseng = {
   style: {
     color: "red",
     weight: 2,
-    fillColor: "yellow",
+    fillColor: "pink",
     fillOpacity: 0.3
   },
   onEachFeature: function (feature, layer) {
@@ -1641,6 +1747,8 @@ var RT2RW4baseng = {
         </tr>
       </table>
     `);
+    addLabelToPolygon(feature, layer);
+
   }
 }).addTo(map);
 
@@ -1847,6 +1955,8 @@ var RT1RW7bodeh = {
         </tr>
       </table>
     `);
+    addLabelToPolygon(feature, layer);
+
   }
 }).addTo(map);
 
@@ -2034,6 +2144,8 @@ var RT2RW7bodeh = {
         </tr>
       </table>
     `);
+    addLabelToPolygon(feature, layer);
+
   }
 }).addTo(map);
 
@@ -2187,6 +2299,8 @@ var RT1RW8bodeh = {
         </tr>
       </table>
     `);
+    addLabelToPolygon(feature, layer);
+
   }
 }).addTo(map);
 
@@ -2495,6 +2609,8 @@ var RT2RW8bodeh = {
         </tr>
       </table>
     `);
+    addLabelToPolygon(feature, layer);
+
   }
 }).addTo(map);
 
@@ -2648,6 +2764,8 @@ var RT3RW8bodeh = {
         </tr>
       </table>
     `);
+    addLabelToPolygon(feature, layer);
+
   }
 }).addTo(map);
 
@@ -2807,6 +2925,8 @@ var RT1RW9bodeh = {
         </tr>
       </table>
     `);
+    addLabelToPolygon(feature, layer);
+
   }
 }).addTo(map);
 
@@ -3033,6 +3153,8 @@ var RT2RW9bodeh= {
         </tr>
       </table>
     `);
+    addLabelToPolygon(feature, layer);
+
   }
 }).addTo(map);
 
@@ -3215,10 +3337,12 @@ var RT2RW9bodeh= {
         <tr>
           <td><b>Jumlah Penduduk</b></td>
           <td>46 Jiwa</td>
-          <td>45 Jiwa</td>
+          <td>35 Jiwa</td>
         </tr>
       </table>
     `);
+    addLabelToPolygon(feature, layer);
+
   }
 }).addTo(map);
 
@@ -3508,8 +3632,11 @@ var RT2RW9bodeh= {
         </tr>
       </table>
     `);
+    addLabelToPolygon(feature, layer);
+
   }
 }).addTo(map);
+
 
   // --- Layer Control ---
   var baseMaps = {
@@ -3522,11 +3649,6 @@ var RT2RW9bodeh= {
     "Batas Gentan": batasgentanlayer
 
   };
-
-
-// Tambahkan ke peta
-map.addControl(new logo());
-
 
   L.control.layers(baseMaps, overlayMaps).addTo(map);
 
